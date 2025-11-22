@@ -3,6 +3,8 @@
 
 #include <stdarg.h>
 #include <unistd.h>
+int print_int(va_list ap);
+
 
 /**
  * struct specifier - struct for format specifiers
