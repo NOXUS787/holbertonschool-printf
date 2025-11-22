@@ -1,0 +1,30 @@
+#ifndef MAIN_H
+#define MAIN_H
+
+#include <stdarg.h>
+#include <unistd.h>
+
+/**
+ * struct specifier - struct for format specifiers
+ * @symbol: the format specifier character
+ * @func: pointer to the function that handles it
+ */
+typedef struct specifier
+{
+	char symbol;
+	int (*func)(va_list ap);
+} spec_t;
+
+/* main functions */
+int _printf(const char *format, ...);
+int _putchar(char c);
+
+/* handlers */
+int print_char(va_list ap);
+int print_string(va_list ap);
+int print_percent(va_list ap);
+
+/* dispatcher */
+int (*get_func(char s))(va_list ap);
+
+#endif /* MAIN_H */
