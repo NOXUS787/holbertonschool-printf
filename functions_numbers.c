@@ -1,37 +1,41 @@
 #include "main.h"
 
 /**
- * print_int - prints an integer (%d, %i)
+ * print_int_recursive - helper to print a positive number
+ * @num: positive long integer
+ *
+ * Return: number of digits printed
+ */
+int print_int_recursive(long num)
+{
+	int count = 0;
+
+	if (num / 10)
+		count += print_int_recursive(num / 10);
+
+	_putchar((num % 10) + '0');
+	return (count + 1);
+}
+
+/**
+ * print_int - prints a signed integer (%d, %i)
  * @ap: argument list
  *
  * Return: number of characters printed
  */
 int print_int(va_list ap)
 {
-	int n = va_arg(ap, int);
-	int num, digit, count = 0;
-	int divisor = 1;
+	long n = va_arg(ap, int);
+	int count = 0;
 
 	if (n < 0)
 	{
 		_putchar('-');
 		count++;
-		n = -n;
+		n = -n;  /* safe because we promoted to long */
 	}
 
-	num = n;
-
-	while ((num / divisor) >= 10)
-		divisor *= 10;
-
-	while (divisor > 0)
-	{
-		digit = num / divisor;
-		_putchar(digit + '0');
-		count++;
-		num %= divisor;
-		divisor /= 10;
-	}
+	count += print_int_recursive(n);
 
 	return (count);
 }

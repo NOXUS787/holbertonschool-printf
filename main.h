@@ -8,6 +8,8 @@ int print_unsigned(va_list ap);
 int print_octal(va_list ap);
 int print_hex_lower(va_list ap);
 int print_hex_upper(va_list ap);
+int print_int(va_list ap);
+int print_int_recursive(long num);
 
 
 /**
