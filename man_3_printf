@@ -1,0 +1,92 @@
+.TH _PRINTF 3 "March 2024" "Holberton School" "Library Functions Manual"
+.SH NAME
+_printf \- custom implementation of the printf function
+
+.SH SYNOPSIS
+.B #include "main.h"
+.PP
+.B int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+The
+.B _printf()
+function produces output according to a format string.
+It writes to the standard output (file descriptor 1)
+using the write system call.
+
+.PP
+The format string is composed of ordinary characters and
+conversion specifications beginning with the percent character '%'.
+
+.PP
+The following conversion specifiers are handled:
+
+.TP
+.B %c
+Prints a single character.
+
+.TP
+.B %s
+Prints a null-terminated string.
+
+.TP
+.B %%
+Prints a percent sign.
+
+.TP
+.B %d
+Prints a signed decimal integer.
+
+.TP
+.B %i
+Prints a signed integer.
+
+.TP
+.B %u
+Prints an unsigned decimal integer.
+
+.TP
+.B %o
+Prints an unsigned octal number.
+
+.TP
+.B %x
+Prints an unsigned hexadecimal integer (lowercase).
+
+.TP
+.B %X
+Prints an unsigned hexadecimal integer (uppercase).
+
+.SH RETURN VALUE
+The
+.B _printf()
+function returns the number of characters printed,
+excluding the null byte used to end strings.
+
+If an error occurs, the function returns -1.
+
+.SH NOTES
+This implementation does not handle:
+.IP \[bu] 2
+Field width
+.IP \[bu] 2
+Precision
+.IP \[bu] 2
+Length modifiers
+.IP \[bu] 2
+Flags (+, space, #, 0, -)
+
+.SH EXAMPLES
+.EX
+_printf("Hello %s\\n", "Holberton");
+_printf("Number: %d\\n", 98);
+_printf("Percent: %%\\n");
+.EE
+
+.SH SEE ALSO
+.BR printf (3),
+.BR write (2)
+
+.SH AUTHORS
+Alexander Román (Noxus787)
+Anthony Caban (AnthoCab2)
