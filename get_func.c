@@ -6,14 +6,21 @@
  *
  * Return: pointer to function, or NULL if not found
  */
+
 int (*get_func(char s))(va_list)
 {
 	int i;
 	spec_t specs[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'%', print_percent},
-		{'\0', NULL}
+	        {'c', print_char},
+	{'s', print_string},
+	{'%', print_percent},
+	{'d', print_int},
+	{'i', print_int},
+	{'u', print_unsigned},
+	{'o', print_octal},
+	{'x', print_hex_lower},
+	{'X', print_hex_upper},
+	{'\0', NULL}
 	};
 
 	for (i = 0; specs[i].symbol != '\0'; i++)
